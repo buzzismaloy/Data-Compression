@@ -1,25 +1,10 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-#define CHAR_COUNT 256
-
-typedef struct HuffmanNode {
-	char character;
-	int frequency;
-	struct HuffmanNode *left, *right;
-} HuffmanNode;
-
-typedef struct MinHeap {
-	int size;
-	int capacity;
-	HuffmanNode** array;
-
-} MinHeap;
+#include "structures.h"
 
 void calculateFrequency(FILE* file, int frequency[]);
-HuffmanNode* createMinHeap(int capacity);
+void printFrequencyTable(int frequency[]); // func for debugging purposes(func prints freq table)
 
-int main() {
+int main(int argc, char* argv[]) {
 
 	return 0;
 }
@@ -32,8 +17,11 @@ void calculateFrequency(FILE* file, int frequency[]) {
 
 }
 
-HuffmanNode* createMinHeap(int capacity) {
-
-
+void printFrequencyTable(int frequency[]) {
+	for(int i = 0; i < CHAR_COUNT; ++i){
+		if (frequency[i] > 0)
+			printf("Character '%c' (ASCII %d) has frequency %d\n", i, i, frequency[i]);
+	}
 }
+
 
