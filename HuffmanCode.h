@@ -1,4 +1,6 @@
 #include "structures.h"
+#include <string.h>
+
 
 HuffmanNode* buildHuffmanTree(int frequency[]) {
 	MinHeap* minHeap = createMinHeap(CHAR_COUNT);
@@ -33,7 +35,7 @@ void generateCodes(HuffmanNode* root, char* code, int top, char codes[CHAR_COUNT
 		generateCodes(root->right, code, top + 1, codes);
 	}
 
-	if(!root->left && root->right) {
+	if(!root->left && !root->right) {
 		code[top] = '\0';
 		strcpy(codes[(unsigned char) root->character], code);
 	}
