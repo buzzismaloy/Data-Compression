@@ -5,6 +5,22 @@ void calculateFrequency(FILE* file, int frequency[]);
 void printFrequencyTable(int frequency[]); // func for debugging purposes(func prints freq table)
 
 int main(int argc, char* argv[]) {
+	if(argc < 3) {
+		fprintf(stderr, "Usage: <input file> <output file>\n");
+		return 1;
+	}
+	
+	FILE *inputFile = fopen(argv[1], "r");
+	if(inputFile == NULL) {
+		perror("Error opening file");
+		return 1;
+	}
+
+	int frequency[CHAR_COUNT] = {0};
+	calculateFrequency(inputFile, frequency);
+	fclose(inputFile);
+
+	printFrequencyTable(frequency);
 
 	return 0;
 }
